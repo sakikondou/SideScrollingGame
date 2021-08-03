@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// ジャンプ力
     /// </summary>
-    [SerializeField] float m_jumpPow = 3f;
+    [SerializeField] float m_jumpPow = 5f;
 
     private void Start()
     {
