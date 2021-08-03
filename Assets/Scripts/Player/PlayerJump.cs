@@ -12,7 +12,7 @@ public class PlayerJump : MonoBehaviour
     public void Init( PlayerInputAction inputActions, Rigidbody2D rb, float jumpPow)
     {
         m_inputActions = inputActions;
-        m_inputActions.Player.Jump.started += context => Jump();
+        m_inputActions.Player.Jump.performed += context => Jump();
         m_rb = rb;
         JumpPow = jumpPow;
     }
