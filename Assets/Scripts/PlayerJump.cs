@@ -7,6 +7,7 @@ public class PlayerJump : MonoBehaviour
     Rigidbody2D m_rb;
     PlayerInputAction m_inputActions;
     public float JumpPow = 5f;
+    bool m_isGrounded = true;
 
     public void Init( PlayerInputAction inputActions, Rigidbody2D rb, float jumpPow)
     {
@@ -18,6 +19,25 @@ public class PlayerJump : MonoBehaviour
 
     void Jump()
     {
-        m_rb.velocity = new Vector2(m_rb.velocity.x, JumpPow);
+        if (m_isGrounded)
+        {
+            m_rb.velocity = new Vector2(m_rb.velocity.x, JumpPow);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            m_isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            m_isGrounded = false;
+        }
     }
 }
